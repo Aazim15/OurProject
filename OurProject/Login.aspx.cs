@@ -46,27 +46,38 @@ namespace OurProject
             //    }
 
             //}
-            using (DBHelper dbHelper = new DBHelper())
-            {
-                List<SqlParameter> Sqlcomm = new List<SqlParameter>();
-                Sqlcomm.Add(dbHelper.AddParameter("@UserName", SqlDbType.NVarChar, username.Text.ToLower()));
-                Sqlcomm.Add(dbHelper.AddParameter("@Password", SqlDbType.NVarChar, Password.Text));
-                var returndataset = dbHelper.ExecDataSetProc("GetLoginUser", Sqlcomm.ToArray());
-                if (returndataset != null && returndataset.Tables.Count > 0 && returndataset.Tables[0].Rows.Count > 0)
-                {
-                    FormsAuthenticationTicket tkt;
-                    string cookiestr;
-                    HttpCookie ck;
-                    tkt = new FormsAuthenticationTicket(1, "Umer", DateTime.Now,
-                    DateTime.Now.AddMinutes(5), true, "Umer");
-                    cookiestr = FormsAuthentication.Encrypt(tkt);
-                    ck = new HttpCookie(FormsAuthentication.FormsCookieName, cookiestr);
-                    ck.Expires = tkt.Expiration;
-                    ck.Path = FormsAuthentication.FormsCookiePath;
-                    Response.Cookies.Add(ck);
-                    Response.Redirect("/");
-                }
-            }
+            FormsAuthenticationTicket tkt;
+            string cookiestr;
+            HttpCookie ck;
+            tkt = new FormsAuthenticationTicket(1, "Umer", DateTime.Now,
+            DateTime.Now.AddMinutes(5), true, "Umer");
+            cookiestr = FormsAuthentication.Encrypt(tkt);
+            ck = new HttpCookie(FormsAuthentication.FormsCookieName, cookiestr);
+            ck.Expires = tkt.Expiration;
+            ck.Path = FormsAuthentication.FormsCookiePath;
+            Response.Cookies.Add(ck);
+            Response.Redirect("/");
+            //using (DBHelper dbHelper = new DBHelper())
+            //{
+            //    List<SqlParameter> Sqlcomm = new List<SqlParameter>();
+            //    Sqlcomm.Add(dbHelper.AddParameter("@UserName", SqlDbType.NVarChar, username.Text.ToLower()));
+            //    Sqlcomm.Add(dbHelper.AddParameter("@Password", SqlDbType.NVarChar, Password.Text));
+            //    var returndataset = dbHelper.ExecDataSetProc("GetLoginUser", Sqlcomm.ToArray());
+            //    if (returndataset != null && returndataset.Tables.Count > 0 && returndataset.Tables[0].Rows.Count > 0)
+            //    {
+            //        FormsAuthenticationTicket tkt;
+            //        string cookiestr;
+            //        HttpCookie ck;
+            //        tkt = new FormsAuthenticationTicket(1, "Umer", DateTime.Now,
+            //        DateTime.Now.AddMinutes(5), true, "Umer");
+            //        cookiestr = FormsAuthentication.Encrypt(tkt);
+            //        ck = new HttpCookie(FormsAuthentication.FormsCookieName, cookiestr);
+            //        ck.Expires = tkt.Expiration;
+            //        ck.Path = FormsAuthentication.FormsCookiePath;
+            //        Response.Cookies.Add(ck);
+            //        Response.Redirect("/");
+            //    }
+            //}
             //if (users.Where(x=> x.UserName.ToLower() == username.Text.ToLower() && Password.Text == x.Password).Any())
             //{
 
