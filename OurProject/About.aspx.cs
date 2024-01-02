@@ -14,19 +14,19 @@ namespace OurProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
-            //    using (DBHelper dbHelper = new DBHelper())
-            //    {
+            if (!IsPostBack)
+            {
+                //using (DBHelper dbHelper = new DBHelper())
+                //{
 
-            //        var returndataset = dbHelper.ExecDataSetProc("getallusers");
-            //        if (returndataset != null && returndataset.Tables.Count > 0 && returndataset.Tables[0].Rows.Count > 0)
-            //        {
-            //            user.DataSource = returndataset.Tables[0];
-            //            user.DataBind();
-            //        }
-            //    }
-            //}
+                //    var returndataset = dbHelper.ExecDataSetProc("getallusers");
+                //    if (returndataset != null && returndataset.Tables.Count > 0 && returndataset.Tables[0].Rows.Count > 0)
+                //    {
+                //        user.DataSource = returndataset.Tables[0];
+                //        user.DataBind();
+                //    }
+                //}
+            }
 
         }
 
